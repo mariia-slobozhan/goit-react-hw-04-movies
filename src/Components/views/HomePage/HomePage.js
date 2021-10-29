@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { trendingMovieSearch } from "../../services/movieSearchApi";
+import { Link } from "react-router-dom";
+import { trendingMovieSearch } from "../../../services/movieSearchApi";
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
@@ -16,9 +17,12 @@ export default function HomePage() {
       <ul>
         {trendingMovieSearch &&
           movies.map((el) => {
-            return <li key={el.id}>{el.title}</li>;
+            return (
+              <li key={el.id}>
+                <Link to={`movies/${el.id}`}>{el.title}</Link>
+              </li>
+            );
           })}
-        <li>Movie</li>
       </ul>
     </section>
   );

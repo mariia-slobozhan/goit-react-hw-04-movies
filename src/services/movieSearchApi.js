@@ -9,6 +9,14 @@ export function trendingMovieSearch() {
     .then((response) => response);
 }
 
-//https://api.themoviedb.org/3/movie/550?api_key=627a47b9938dd67b6ad44cb66111cdb0
+export function searchMovieByKeyword(query) {
+  return axios
+    .get(
+      `search/movie?api_key=${key}&page=1&query=${query}&include_adult=false`
+    )
+    .then((response) => response);
+}
 
-//627a47b9938dd67b6ad44cb66111cdb0
+export function movieDetailsOpen(id) {
+  return axios.get(`/movie/${id}?api_key=${key}`);
+}

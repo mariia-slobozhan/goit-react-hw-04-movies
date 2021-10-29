@@ -1,10 +1,27 @@
 import "./App.css";
-import HomePage from "./Components/HomePage/HomePage";
+import { Switch, Route, Redirect } from "react-router-dom";
+import Navigation from "./Components/Navigation/Navigation";
+import HomePage from "./Components/views/HomePage/HomePage";
+import MoviesPage from "./Components/views/MoviesPage/MoviesPage";
+import MovieDetailsPage from "./Components/views/MovieDetailsPage/MovieDetailsPage";
 
 function App() {
   return (
     <div className="App">
-      <HomePage />
+      <Navigation />
+
+      <Switch>
+        <Route exact path="/">
+          <HomePage />
+        </Route>
+        <Route exact path="/movies">
+          <MoviesPage />
+        </Route>
+        <Route path="/movies/:movieId">
+          <MovieDetailsPage />
+        </Route>
+        <Redirect to="/" />
+      </Switch>
     </div>
   );
 }
