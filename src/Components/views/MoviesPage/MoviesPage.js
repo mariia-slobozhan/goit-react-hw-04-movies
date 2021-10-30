@@ -24,13 +24,14 @@ export default function MoviesPage() {
     <>
       <SearchBar onSubmit={handleSubmit} />
       <ul>
-        {movies.map((movie) => {
-          return (
-            <li key={movie.id}>
-              <Link to={`${url}/${movie.id}`}>{movie.title}</Link>
-            </li>
-          );
-        })}
+        {searchMovieByKeyword &&
+          movies.map((movie) => {
+            return (
+              <li key={movie.id}>
+                <Link to={`${url}/${movie.id}`}>{movie.title}</Link>
+              </li>
+            );
+          })}
       </ul>
     </>
   );

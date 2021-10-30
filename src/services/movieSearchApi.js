@@ -18,5 +18,11 @@ export function searchMovieByKeyword(query) {
 }
 
 export function movieDetailsOpen(id) {
-  return axios.get(`/movie/${id}?api_key=${key}`);
+  return axios.get(`movie/${id}?api_key=${key}`).then((response) => response);
+}
+
+export function movieCastOpen(id) {
+  return axios
+    .get(`movie/${id}/credits?api_key=${key}&language=en-US`)
+    .then((response) => response);
 }
