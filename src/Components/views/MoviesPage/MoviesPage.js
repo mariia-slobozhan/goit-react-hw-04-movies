@@ -1,24 +1,28 @@
 import { useState, useCallback, useEffect } from "react";
-// import {Switch, Route} from 'react-router-dom'
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link, useRouteMatch, useHistory, useLocation } from "react-router-dom";
 import { searchMovieByKeyword } from "../../../services/movieSearchApi";
 import SearchBar from "../SearchBar/SearchBar";
 
 export default function MoviesPage() {
-  const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const { url } = useRouteMatch();
+  const history = useHistory();
+  const location = useLocation();
 
   useEffect(() => {
+    const query = new URLSearchParams(location.search).get("query") ?? "";
     if (query === "") {
       return;
     }
     searchMovieByKeyword(query).then((resp) => setMovies(resp.data.results));
-  }, [query]);
+  }, [location.search]);
 
-  const handleSubmit = useCallback((query) => {
-    setQuery(query);
-  }, []);
+  const handleSubmit = useCallback(
+    (query) => {
+      history.push({ ...location, search: `query=${query}` });
+    },
+    [history, location]
+  );
 
   return (
     <>
@@ -28,7 +32,16 @@ export default function MoviesPage() {
           movies.map((movie) => {
             return (
               <li key={movie.id}>
-                <Link to={`${url}/${movie.id}`}>{movie.title}</Link>
+                <Link
+                  to={{
+                    pathname: `${url}/${movie.id}`,
+                    state: {
+                      from: { location, label: "Back to movies search" },
+                    },
+                  }}
+                >
+                  {movie.title}
+                </Link>
               </li>
             );
           })}

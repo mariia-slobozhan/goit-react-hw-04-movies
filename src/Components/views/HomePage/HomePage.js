@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { trendingMovieSearch } from "../../../services/movieSearchApi";
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     trendingMovieSearch().then((resp) => {
@@ -19,7 +20,14 @@ export default function HomePage() {
           movies.map((el) => {
             return (
               <li key={el.id}>
-                <Link to={`movies/${el.id}`}>{el.title}</Link>
+                <Link
+                  to={{
+                    pathname: `movies/${el.id}`,
+                    state: { from: { location, label: "Back to Home" } },
+                  }}
+                >
+                  {el.title}
+                </Link>
               </li>
             );
           })}
