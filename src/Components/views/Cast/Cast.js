@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { movieCastOpen } from "../../../services/movieSearchApi";
 import actor_default from "../../../images/actor_default.png";
+import s from "./Cast.module.css";
 
 export default function Cast() {
   const [cast, setCast] = useState([]);
@@ -12,21 +13,21 @@ export default function Cast() {
   }, [movieId]);
 
   return (
-    <ul>
+    <ul className={s.list}>
       {movieCastOpen &&
         cast.map((el) => {
           return (
-            <li key={el.id}>
+            <li className={s.item} key={el.id}>
               {el.profile_path ? (
                 <img
                   src={`https://image.tmdb.org/t/p/w300${el.profile_path}`}
                   alt={el.name}
                 />
               ) : (
-                <img src={actor_default} alt={el.name} />
+                <img className={s.actor} src={actor_default} alt={el.name} />
               )}
-              <p>{el.name}</p>
-              <p>Character: {el.character}</p>
+              <p className={s.info}>{el.name}</p>
+              <p className={s.info}>Character: {el.character}</p>
             </li>
           );
         })}

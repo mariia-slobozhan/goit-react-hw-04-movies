@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { movieReviewOpen } from "../../../services/movieSearchApi";
 import Loader from "../../Loader/Loader";
+import s from "./Reviews.module.css";
 
 export default function Reviews() {
   const [review, setReview] = useState([]);
@@ -21,21 +22,23 @@ export default function Reviews() {
 
   if (status === "complete") {
     return (
-      <>
-        <h2>{review.length === 0 && "There are not reviews for this movie"}</h2>
-        <ul>
+      <section className={s.reviews}>
+        <h2 className={s.info}>
+          {review.length === 0 && "There are not reviews for this movie"}
+        </h2>
+        <ul className={s.list}>
           {review &&
             review !== [] &&
             review.map((rew) => {
               return (
-                <li key={rew.id}>
-                  <h2>Author: {rew.author}</h2>
-                  <p>Review: {rew.content}</p>
+                <li className={s.item} key={rew.id}>
+                  <h2 className={s.author}>Author: {rew.author}</h2>
+                  <p className={s.review}>Review: {rew.content}</p>
                 </li>
               );
             })}
         </ul>
-      </>
+      </section>
     );
   }
 }

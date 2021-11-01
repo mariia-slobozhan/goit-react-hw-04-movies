@@ -1,0 +1,25 @@
+.navigation {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 100px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 36px;
+  font-weight: 700;
+
+  background-color: rgb(197, 197, 91);
+}
+
+.navlink {
+  text-decoration: none;
+  color: rgb(67, 63, 63);
+}
+
+.navlink:not(:last-child) {
+  margin-right: 25px;
+}
+
+.active_link {
+  color: rgb(83, 39, 114);
+}

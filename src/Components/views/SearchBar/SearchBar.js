@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import s from "./SearchBar.module.css";
 
 export default function SearchBar({ onSubmit }) {
   const [query, setQuery] = useState("");
@@ -19,7 +20,7 @@ export default function SearchBar({ onSubmit }) {
   );
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={s.form}>
       <input
         onChange={handleChange}
         autoComplete="off"
@@ -27,8 +28,9 @@ export default function SearchBar({ onSubmit }) {
         type="text"
         name="query"
         placeholder="search some movie"
+        className={s.input}
       ></input>
-      <button>Search</button>
+      <button className={s.button}>Search</button>
     </form>
   );
 }

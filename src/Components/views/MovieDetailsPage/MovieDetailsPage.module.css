@@ -1,0 +1,58 @@
+.section {
+  margin: 20px 50px;
+}
+
+.button {
+  display: flex;
+  padding: 12px;
+  margin-bottom: 10px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 900;
+  color: rgb(28, 116, 75);
+  border: 1px solid rgba(92, 91, 91, 0.3);
+  border-radius: 5px;
+}
+
+.movie_details {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.poster {
+  max-height: 400px;
+  border-radius: 5px;
+}
+
+.info {
+  max-width: 500px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 1px solid rgba(92, 91, 91, 0.3);
+}
+
+.title {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.label {
+  font-weight: 700;
+}
+
+.text {
+  font-weight: 400;
+  margin: 0px 5px;
+}
+
+.link {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  color: rgb(67, 63, 63);
+}
+.link:not(:last-child) {
+  margin-right: 30px;
+}
+
+.active_link {
+  color: rgb(83, 39, 114);
+}
