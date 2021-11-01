@@ -49,7 +49,7 @@ export default function MovieDetailsPage() {
             User Score: <span className={s.text}>{vote_average * 10} %</span>
           </p>
           <p className={s.label}>
-            Owerview: <span className={s.text}>{overview}</span>
+            Overview: <span className={s.text}>{overview}</span>
           </p>
           <p className={s.label}>
             Genres:
