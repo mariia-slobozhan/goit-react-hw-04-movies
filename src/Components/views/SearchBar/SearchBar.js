@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import PropTypes from "prop-types";
 import s from "./SearchBar.module.css";
 
 export default function SearchBar({ onSubmit }) {
@@ -34,3 +35,7 @@ export default function SearchBar({ onSubmit }) {
     </form>
   );
 }
+
+SearchBar.propTypes = {
+  onSubmit: PropTypes.func,
+};
